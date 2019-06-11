@@ -1,57 +1,48 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { easePolyOut } from 'd3-ease'
 import Animate from 'react-move/Animate'
 
 class Stripes extends Component {
 
-    // we have three stripes in homepage that animate
     state = {
         stripes: [
-            {
-                background: '#98c5e9',
-                left: 120,
-                rotate: 25,
-                top: -260,
-                delay: 0
-            },
-            {
-                background: '#ffffff',
-                left: 360,
-                rotate: 25,
-                top: -397,
-                delay: 200
-            },
-            {
-                background: '#98c5e9',
-                left: 600,
-                rotate: 25,
-                top: -498,
-                delay: 400
-            }
+            { background: '#98c5e9', left: 120, rotate: 25, top: -260, delay: 400 },
+            { background: '#ffffff', left: 360, rotate: 25, top: -397, delay: 600 },
+            { background: '#98c5e9', left: 600, rotate: 25, top: -498, delay: 800 }
         ]
     }
-    showStripes = () => {
+
+
+    showStripes = () => (
         this.state.stripes.map((stripe, i) => (
             <Animate
                 key={i}
                 show={true}
+
                 start={{
-                    background: "#ffffff",
+                    background: '#ffffff',
                     opacity: 0,
                     left: 0,
                     rotate: 0,
                     top: 0
                 }}
+
                 enter={{
-                    background: [stripe.background],
+                    background: stripe.background,
                     opacity: [1],
-                    left: [stripe.left],
-                    rotate: [stripe.rotate],
-                    top: [stripe.top],
-                    timing: { delay: 500, duration: 200, ease: easePolyOut }
+                    left: stripe.left,
+                    rotate: stripe.rotate,
+                    top: stripe.top,
+                    timing: { delay: stripe.delay, duration: 200, ease: easePolyOut },
+                    events: {
+                        end() {
+                            console.log('animation finished')
+                        }
+                    }
                 }}
             >
-                {({ opacity, left, top, rotate, background }) => {
+
+                {({ opacity, left, rotate, top, background }) => {
                     return (
                         <div
                             className="stripe"
@@ -60,22 +51,22 @@ class Stripes extends Component {
                                 opacity,
                                 transform: `rotate(${rotate}deg) translate(${left}px, ${top}px)`
                             }}
-                        ></div>
+                        >
+
+                        </div>
                     )
                 }}
-
             </Animate>
         ))
+    )
 
-    }
     render() {
         return (
             <div className="featured_stripes">
                 {this.showStripes()}
-
             </div>
-        )
+        );
     }
 }
 
-export default Stripes
+export default Stripes;
