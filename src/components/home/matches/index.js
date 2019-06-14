@@ -17,9 +17,9 @@ const MatchesHome = () => {
                 <Blocks />
 
                 <Tag
-                    bck="#0e1731"
-                    size="50px"
-                    color="#ffffff"
+                    bck="#ffffff"
+                    size="22px"
+                    color="#0e1731"
                     link={true}
                     linkto="/the_team"
                 >
