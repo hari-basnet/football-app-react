@@ -3,21 +3,33 @@ import Stripes from '../../../Resources/images/stripes.png'
 import { Tag } from '../../ui/misc'
 import Reveal from 'react-reveal'
 
+import HomeCards from './cards.js'
+
 class MeetPlayers extends Component {
 
     state = {
+        show: false
 
     }
     render() {
         return (
-            <Reveal>
+            <Reveal
+                fraction={0.7}
+                onReveal={() => {
+                    this.setState({
+                        show: true
+                    })
+                }}
+            >
                 <div className="home_meetplayers"
                     style={{ background: `#ffffff url(${Stripes})` }}
                 >
                     <div className="container">
                         <div className="home_meetplayers_wrapper">
                             <div className="home_card_wrapper">
-                                players
+                                <HomeCards 
+                                    show={this.state.show}
+                                />
                         </div>
                             <div className="home_text_wrapper">
                                 <div>
