@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { easePolyOut } from 'd3-ease'
 import Animate from 'react-move/Animate'
 import Otamendi from '../../../Resources/images/players/Otamendi.png'
-import PlayerCard from '../../'
+import PlayerCard from '../../ui/playerCard'
+
 
 class HomeCards extends Component {
     state = {
-        show: this.props.show,
         cards: [
             {
                 bottom: 90,
@@ -27,7 +27,7 @@ class HomeCards extends Component {
 
         ]
     }
-    showAnimateCards = () => {
+    showAnimateCards = () => (
         this.state.cards.map((card, i) => (
             <Animate
                 key={i}
@@ -53,18 +53,23 @@ class HomeCards extends Component {
 
                             }}
                         >
-                            div
+                            <PlayerCard
+                                number="30"
+                                name="Nikolas"
+                                lastName="Otamendi"
+                                bck={Otamendi}
+                            />
                         </div>
                     )
                 }}
             </Animate>
         ))
 
-    }
+    )
     render() {
         return (
             <div>
-                {this.showAnimateCards}
+                {this.showAnimateCards()}
             </div>
         )
     }

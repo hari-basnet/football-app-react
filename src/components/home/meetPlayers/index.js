@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Stripes from '../../../Resources/images/stripes.png'
 import { Tag } from '../../ui/misc'
-import Reveal from 'react-reveal'
+import Reveal from 'react-reveal/Reveal'
 
-import HomeCards from './cards.js'
+import HomeCards from './cards'
 
 class MeetPlayers extends Component {
 
@@ -27,10 +27,11 @@ class MeetPlayers extends Component {
                     <div className="container">
                         <div className="home_meetplayers_wrapper">
                             <div className="home_card_wrapper">
-                                <HomeCards 
+                                card
+                                <HomeCards
                                     show={this.state.show}
                                 />
-                        </div>
+                            </div>
                             <div className="home_text_wrapper">
                                 <div>
                                     <Tag
